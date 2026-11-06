@@ -1,0 +1,12 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <subscriber
+      for="ZPublisher.interfaces.IPubBeforeCommit"
+      handler=".login.classic_login_refused"
+      />
+  <subscriber
+      for="ZPublisher.interfaces.IPubAfterTraversal"
+      handler=".login.redirect_to_password_reset"
+      />
+
+</configure>

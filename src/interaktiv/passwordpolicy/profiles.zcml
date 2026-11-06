@@ -1,0 +1,33 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="interaktiv.passwordpolicy"
+    >
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Interaktiv Passwordpolicy: Install"
+      description="Configurable password policy and Argon2id password hashing."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/default"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Interaktiv Passwordpolicy: Uninstall"
+      description="Uninstall Interaktiv Passwordpolicy setup."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/uninstall"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="interaktiv.passwordpolicy"
+      />
+
+
+  <include package=".upgrades" />
+
+</configure>

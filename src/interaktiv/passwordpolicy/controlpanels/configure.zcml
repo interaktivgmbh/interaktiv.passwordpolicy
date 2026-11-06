@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="interaktiv.passwordpolicy"
+    >
+
+  <browser:page
+      name="passwordpolicy-controlpanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".passwordpolicy_settings.PasswordPolicyView"
+      permission="cmf.ManagePortal"
+      layer="..interfaces.IBrowserLayer"
+      />
+
+  <adapter
+      factory=".passwordpolicy_settings.PasswordPolicyConfigletPanel"
+      name="passwordpolicy-controlpanel"
+      />
+
+</configure>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<object xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+        name="portal_controlpanel"
+        i18n:domain="interaktiv.passwordpolicy"
+>
+
+  <configlet action_id="passwordpolicy-controlpanel"
+             appId="interaktiv.passwordpolicy"
+             category="Products"
+             condition_expr=""
+             icon_expr=""
+             title="Password Policy"
+             url_expr="string:${portal_url}/@@passwordpolicy-controlpanel"
+             visible="True"
+             i18n:attributes="title"
+  >
+    <permission>Manage portal</permission>
+  </configlet>
+
+</object>

@@ -1,0 +1,8 @@
+<configure xmlns="http://namespaces.zope.org/zope">
+
+  <utility
+      name="interaktiv.passwordpolicy.argon2_profiles"
+      component=".argon2_profiles.argon2_profiles_vocabulary"
+      />
+
+</configure>

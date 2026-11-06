@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<registry>
+
+  <records interface="interaktiv.passwordpolicy.controlpanels.passwordpolicy_settings.IPasswordPolicySettings"
+           prefix="interaktiv.passwordpolicy"
+           remove="true"
+  />
+
+</registry>

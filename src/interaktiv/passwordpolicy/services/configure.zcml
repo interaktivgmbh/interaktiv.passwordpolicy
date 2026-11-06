@@ -1,0 +1,15 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    >
+
+  <plone:service
+      method="POST"
+      factory=".login.Login"
+      for="plone.restapi.bbb.IPloneSiteRoot"
+      permission="zope.Public"
+      layer="..interfaces.IBrowserLayer"
+      name="@login"
+      />
+
+</configure>
