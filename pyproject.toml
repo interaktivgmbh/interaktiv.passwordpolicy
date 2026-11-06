@@ -68,6 +68,7 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build]
 strict-naming = true
+artifacts = ["*.mo"]
 
 [tool.hatch.build.targets.sdist]
 exclude = [
