@@ -1,1 +1,0 @@
-Verify a dummy hash for unknown login names to prevent user enumeration via timing attacks. @arybakov05

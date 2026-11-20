@@ -9,6 +9,18 @@
 
 <!-- towncrier release notes start -->
 
+## 1.0.1 (2026-11-20)
+
+
+### Bugfix
+
+- Verify a dummy hash for unknown login names to prevent user enumeration via timing attacks. @arybakov05 [#2](https://github.com/interaktivgmbh/interaktiv.passwordpolicy/issues/2)
+
+
+### Tests
+
+- Test that generated password detection matches Plone's generatePassword(). @arybakov05 [#1](https://github.com/interaktivgmbh/interaktiv.passwordpolicy/issues/1)
+
 ## 1.0.0 (2026-11-06)
 
 
