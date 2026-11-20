@@ -1,4 +1,6 @@
 from interaktiv.passwordpolicy.config import MIN_PASSWORD_LENGTH
+from interaktiv.passwordpolicy.plugins.passwordpolicy import GENERATED_PASSWORD_LENGTH
+from interaktiv.passwordpolicy.plugins.passwordpolicy import is_generated_password
 from interaktiv.passwordpolicy.plugins.passwordpolicy import PASSWORD_REQUIREMENTS
 from interaktiv.passwordpolicy.plugins.passwordpolicy import password_too_short
 from interaktiv.passwordpolicy.plugins.passwordpolicy import PasswordPolicyPlugin
@@ -138,6 +140,13 @@ class TestPasswordPolicyPlugin:
 
     def test_validateUserInfo__no_set_info(self):
         assert self.plugin.validateUserInfo(None, "test_user", {}) == []
+
+    def test_is_generated_password__matches_plone(self):
+        password = self.portal.portal_registration.generatePassword()
+
+        # fails if Plone changes generatePassword(): update GENERATED_PASSWORD_LENGTH
+        assert len(password) == GENERATED_PASSWORD_LENGTH
+        assert is_generated_password(password, None)
 
     def test_validateUserInfo__generated_password_skips_validation(self):
         password = self.portal.portal_registration.generatePassword()
