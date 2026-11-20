@@ -5,6 +5,7 @@ from AuthEncoding import AuthEncoding
 from interaktiv.passwordpolicy import logger
 from interaktiv.passwordpolicy.hashing import hash_password
 from interaktiv.passwordpolicy.hashing import needs_rehash
+from interaktiv.passwordpolicy.hashing import verify_dummy
 from interaktiv.passwordpolicy.password_change import password_change_required
 from interaktiv.passwordpolicy.password_change import refuse_login
 from plone.protect.utils import safeWrite
@@ -57,6 +58,7 @@ class UserManager(PloneUserManager):
         result = super().authenticateCredentials(credentials)
 
         if result is None:
+            self._verify_dummy_if_unknown(credentials)
             return None
 
         userid, login = result
@@ -67,6 +69,19 @@ class UserManager(PloneUserManager):
             return None
 
         return result
+
+    def _verify_dummy_if_unknown(self, credentials):
+        login = credentials.get("login")
+        password = credentials.get("password")
+
+        if login is None or password is None:
+            return
+
+        userid = self._login_to_userid.get(login)
+
+        # unknown logins must cost as much as a wrong password
+        if userid is None or self._user_passwords.get(userid) is None:
+            verify_dummy(password)
 
     def _rehash_password(self, userid, password):
         reference = self._user_passwords.get(userid)
